@@ -7,7 +7,8 @@ export class MessageRoutes {
     private mesContr = new MessageControllers();
 
     public getAppRoutes(): express.Router {
-        this.router.get('/first', this.mesContr.getMessage());
+        this.router.get('/:id', this.mesContr.message());
+        this.router.post('/create', this.mesContr.create());
         return this.router;
     }
 

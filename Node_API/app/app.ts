@@ -1,6 +1,6 @@
 import express from 'express';
 import { Database } from './api/configuration/db';
-import { Routes } from './api/configuration/routes';
+import { RoutesIndex } from './api/routes/routesIndex';
 import { Web } from './api/configuration/web';
 
 export class App {
@@ -9,6 +9,7 @@ export class App {
   constructor() {
     this.app = express();
     this.configure();
+    
   }
 
   private configure() {
@@ -17,6 +18,6 @@ export class App {
     const web: Web = new Web(this.app);
     web.activateCors();
     web.bodyParser();
-    const route: Routes = new Routes(this.app);
+    const route: RoutesIndex = new RoutesIndex(this.app);
   }
 }

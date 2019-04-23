@@ -7,7 +7,8 @@ export class Web {
 
   constructor(app: express.Application) {
     this.app = app;
-    app.use(morgan("dev"));
+    this.app.use(morgan("dev"));
+
   }
 
   public bodyParser() {

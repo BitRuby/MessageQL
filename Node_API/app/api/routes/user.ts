@@ -7,9 +7,8 @@ export class UserRoutes {
     private usrContr = new UserControllers();
 
     public getAppRoutes(): express.Router {
-        this.router.get('/:id', this.usrContr.getById());
-        this.router.post('/add', this.usrContr.add());
-        this.router.delete('/drop', this.usrContr.drop());
+        this.router.get('/:id', this.usrContr.users());
+        this.router.post('/create', this.usrContr.create());
         return this.router;
     }
 
