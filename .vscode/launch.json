@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Application",
+            "request": "launch",
+            "mainClass": "com.messageql.Application",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Application",
+            "request": "launch",
+            "mainClass": "com.messageql.demo.Application",
+            "projectName": "demo"
+        }
+    ]
+}

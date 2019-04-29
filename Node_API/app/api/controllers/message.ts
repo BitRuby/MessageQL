@@ -34,7 +34,6 @@ export class MessageControllers {
       }
     };
   }
-
   message(): Handler {
     return async (req, res, next) => {
       try {
