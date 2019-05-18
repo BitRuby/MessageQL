@@ -2,6 +2,32 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - DemoGraphQlApplication",
+            "request": "launch",
+            "mainClass": "com.example.DemoGraphQL.DemoGraphQlApplication",
+            "projectName": "DemoGraphQL"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DemoApplication",
+            "request": "launch",
+            "mainClass": "com.messageql.graph.application.DemoApplication",
+            "projectName": "application"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainApplication",
+            "request": "launch",
+            "mainClass": "com.messageql.MainApplication"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainApplication",
+            "request": "launch",
+            "mainClass": "com.messageql.demo.MainApplication"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Application",
             "request": "launch",
             "mainClass": "com.messageql.Application",
