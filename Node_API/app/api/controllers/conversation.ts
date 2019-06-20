@@ -37,7 +37,7 @@ export class ConversationControllers {
         }
         let el: number;
         if (
-          (el = findById.userIdArray.indexOf("5cbf14e0392bce152ce173df")) !== -1
+          (el = findById.userIdArray.indexOf("5d0beaf1bdf86b58d11ccb43")) !== -1
         ) {
           findById.userIdArray.splice(el, 1);
           findById.save();
@@ -64,8 +64,8 @@ export class ConversationControllers {
             error: "Cannot find conversation with specified identifier"
           });
         }
-        if (findById.userIdArray.indexOf("5cbf14e0392bce152ce173df") === -1) {
-          findById.userIdArray.push("5cbf14e0392bce152ce173df");
+        if (findById.userIdArray.indexOf("5d0beaf1bdf86b58d11ccb43") === -1) {
+          findById.userIdArray.push("5d0beaf1bdf86b58d11ccb43");
           findById.save();
           res.status(200).json({
             message: "Handling POST requests to /conversation/join",
@@ -87,7 +87,7 @@ export class ConversationControllers {
   create(): Handler {
     return async (req, res, next) => {
       try {
-        const findOne = await User.findOne({ _id: "5cbf14e0392bce152ce173df" });
+        const findOne = await User.findOne({ _id: "5d0beaf1bdf86b58d11ccb43" });
         if (!findOne) {
           return res.status(405).json({
             message: "Handling POST requests to /conversation/create",

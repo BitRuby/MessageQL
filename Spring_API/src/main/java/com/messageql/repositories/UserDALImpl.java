@@ -1,5 +1,5 @@
 package com.messageql.repositories;
-
+import java.util.List;
 import com.messageql.dal.UserDAL;
 import com.messageql.model.User;
 
@@ -29,6 +29,11 @@ public class UserDALImpl implements UserDAL {
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(id));
         return mongoTemplate.findOne(query, User.class);
+    }
+
+    @Override
+    public List<User> getUsers(int limit) {
+        return mongoTemplate.find(new Query().limit(limit), User.class);
     }
 
 }

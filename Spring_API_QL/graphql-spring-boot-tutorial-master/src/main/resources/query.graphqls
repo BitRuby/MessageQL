@@ -1,0 +1,15 @@
+type Query {
+  users(limit: Int): [User]
+  messages(_id: String): [Message]
+}
+type User {
+  id: String!
+  username: String
+  password: String
+}
+type Message {
+  id: String!
+  date: String
+  content: String
+  convId: String
+}

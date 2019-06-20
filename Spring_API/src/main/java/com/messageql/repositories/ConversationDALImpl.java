@@ -29,7 +29,7 @@ public class ConversationDALImpl implements ConversationDAL {
 
     @Override
     public Conversation joinConversation(String id) {
-        String uId = "5cc586619daaae299c9b017f";
+        String uId = "5d0beb18bdf86b58d11fd96d";
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(uId));
         User user = mongoTemplate.findOne(query, User.class);
@@ -40,7 +40,7 @@ public class ConversationDALImpl implements ConversationDAL {
 
     @Override
     public Conversation leaveConversation(String id) {
-        String uId = "5cc586619daaae299c9b017f";
+        String uId = "5d0beb18bdf86b58d11fd96d";
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(uId));
         User user = mongoTemplate.findOne(query, User.class);
@@ -51,7 +51,7 @@ public class ConversationDALImpl implements ConversationDAL {
 
     @Override
     public Conversation saveConversation() {
-        String uId = "5cc586619daaae299c9b017f";
+        String uId = "5d0beb18bdf86b58d11fd96d";
         Conversation conversation = new Conversation();
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(uId));

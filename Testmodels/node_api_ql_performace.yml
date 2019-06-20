@@ -1,0 +1,30 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 5
+      arrivalRate: 100
+scenarios:
+  - flow:
+      - post:
+          url: "/graphql"
+          json:
+            query: "mutation { newConversation {   _id  }}"
+          capture:
+            json: "$.data.newConversation._id"
+            as: "newMessId"
+      - post:
+          url: "/graphql"
+          json:
+            query: 'mutation { createMessage(content: "Hello", convId: "{{newMessId}}") {   _id  }}'
+      - post:
+          url: "/graphql"
+          json:
+            query: 'query { messages (_id:"{{newMessId}}") { _id } }'
+      - post:
+          url: "/graphql"
+          json:
+            query: 'mutation { createMessage(content: "Whats up?", convId: "{{newMessId}}") {   _id  }}'
+      - post:
+          url: "/graphql"
+          json:
+            query: 'query { messages (_id:"{{newMessId}}") { _id } }'

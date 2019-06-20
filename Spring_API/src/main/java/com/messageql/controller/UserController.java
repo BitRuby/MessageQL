@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 @CrossOrigin("*")
@@ -21,10 +23,17 @@ public class UserController {
     @Autowired
     UserDALImpl userRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/one", method = RequestMethod.GET)
     public ResponseEntity<User> users(@RequestParam String id) {
         return new ResponseEntity<User>(userRepository.getUser(id), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> usersAll(@RequestParam int limit) {
+        return new ResponseEntity<List<User>>(userRepository.getUsers(limit), HttpStatus.OK);
+    }
+
+
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<User> create(@RequestBody User user) {

@@ -21,7 +21,7 @@ export module ConversationResolvers {
   }
 
   export function newConversation() {
-    return User.findOne({ _id: "5cb35d264f4d2437d85fa181" })
+    return User.findOne({ _id: "5d0beb0cbdf86b58d11e5261" })
       .then(user => {
         if (!user) {
           throw new Error("Cannot find user with specified identifier.");
@@ -42,7 +42,7 @@ export module ConversationResolvers {
   }
 
   export function joinConversation(args: any) {
-    return User.findOne({ _id: "5cb355f7b85c0a30a499cd98" })
+    return User.findOne({ _id: "5d0beb0cbdf86b58d11e5261" })
       .then(user => {
         if (!user) {
           throw new Error("Cannot find user with specified identifier.");
@@ -54,8 +54,8 @@ export module ConversationResolvers {
         if (!conv) {
           throw new Error("Cannot find conversation with specified identifier");
         } else {
-          if (conv.userIdArray.indexOf("5cb355f7b85c0a30a499cd98") === -1) {
-            conv.userIdArray.push("5cb355f7b85c0a30a499cd98");
+          if (conv.userIdArray.indexOf("5d0beb0cbdf86b58d11e5261") === -1) {
+            conv.userIdArray.push("5d0beb0cbdf86b58d11e5261");
             return conv.save();
           } else {
             throw new Error("User already joined");
@@ -68,7 +68,7 @@ export module ConversationResolvers {
   }
 
   export function leaveConversation(args: any) {
-    return User.findOne({ _id: "5cb35d264f4d2437d85fa181" })
+    return User.findOne({ _id: "5d0beb0cbdf86b58d11e5261" })
       .then(user => {
         if (!user) {
           throw new Error("Cannot find user with specified identifier.");
@@ -82,7 +82,7 @@ export module ConversationResolvers {
         } else {
           let el: number;
           if (
-            (el = conv.userIdArray.indexOf("5cb35d264f4d2437d85fa181")) === -1
+            (el = conv.userIdArray.indexOf("5d0beb0cbdf86b58d11e5261")) === -1
           ) {
             throw new Error("User already leaved");
           } else {

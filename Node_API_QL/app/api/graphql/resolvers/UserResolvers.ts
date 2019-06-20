@@ -2,8 +2,10 @@ import User from "../../models/User";
 import bcryptjs from "bcryptjs";
 
 export module UserResolvers {
-  export function users() {
+  export function users(args: any) {
+    console.log(args);
     return User.find()
+      .limit(args.limit)
       .then(result => {
         return result.map(user => {
           return user;

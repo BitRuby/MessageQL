@@ -20,7 +20,7 @@ export module MessageResolvers {
       });
   }
   export function createMessage(args: any) {
-    return User.findOne({ _id: "5cb35d264f4d2437d85fa181" })
+    return User.findOne({ _id: "5d0beb0cbdf86b58d11e5261" })
       .then(user => {
         if (!user) {
           throw new Error("Cannot find user with specified identifier.");

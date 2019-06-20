@@ -2,13 +2,14 @@ import {
   GraphQLObjectType,
   GraphQLID,
   GraphQLString,
-  GraphQLList
+  GraphQLList,
+  GraphQLInt
 } from "graphql";
 import { UserResolvers } from "../resolvers/UserResolvers";
 
 const userType = new GraphQLObjectType({
   name: "User",
-  fields:{
+  fields: {
     _id: {
       type: GraphQLID
     },
@@ -24,7 +25,12 @@ const userType = new GraphQLObjectType({
 const query = {
   users: {
     type: new GraphQLList(userType),
-    resolve: () => UserResolvers.users()
+    args: {
+      limit: {
+        type: GraphQLInt
+      }
+    },
+    resolve: (obj: any, input: any) => UserResolvers.users(input)
   }
 };
 

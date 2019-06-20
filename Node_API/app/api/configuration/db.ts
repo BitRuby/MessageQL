@@ -2,17 +2,11 @@ import mongoose from "mongoose";
 import data from "./db.config.json";
 
 export class Database {
-
   public connect() {
     mongoose
-      .connect(
-        `mongodb://${data.Username}:${
-          data.Password
-        }@ds231956.mlab.com:31956/messageql`,
-        {
-          useNewUrlParser: true
-        }
-      )
+      .connect(`mongodb://localhost:27017/Node_API`, {
+        useNewUrlParser: true
+      })
       .then(success => {
         console.log("Connect to database success");
       })
