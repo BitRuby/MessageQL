@@ -9,5 +9,7 @@ public interface ConversationDAL {
 
     Conversation leaveConversation(String id);
 
+    Conversation deleteConversation(String id);
+
     Conversation saveConversation();
 }

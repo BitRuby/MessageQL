@@ -28,3 +28,7 @@ scenarios:
           url: "/graphql"
           json:
             query: 'query { messages (_id:"{{newMessId}}") { _id } }'
+      - post:
+          url: "/graphql"
+          json:
+            query: 'mutation { deleteConversation (_id:"{{newMessId}}") { _id } }'

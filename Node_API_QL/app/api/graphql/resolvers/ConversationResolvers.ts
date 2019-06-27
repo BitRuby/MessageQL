@@ -1,5 +1,6 @@
 import Conversation from "../../models/Conversation";
 import User from "../../models/User";
+import Message from "../../models/Message";
 
 export module ConversationResolvers {
   export function conversations(args: any) {
@@ -35,6 +36,31 @@ export module ConversationResolvers {
       })
       .then(conv => {
         return conv;
+      })
+      .catch(err => {
+        throw err;
+      });
+  }
+
+  export function deleteConversation(args: any) {
+    if (!args._id.match(/^[0-9a-fA-F]{24}$/)) {
+      throw new Error("Invalid identificator format.");
+    }
+    return Conversation.findOne({ _id: args._id })
+      .then(conversation => {
+        if (!conversation) {
+          throw new Error(
+            "Cannot find conversation with specified identifier."
+          );
+        } else {
+          return conversation.remove();
+        }
+      })
+      .then(conversations => {
+        return Message.find({ convId: args._id }).remove();
+      })
+      .then(deletedMessages => {
+        return deletedMessages.convId;
       })
       .catch(err => {
         throw err;

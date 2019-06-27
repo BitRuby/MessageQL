@@ -35,6 +35,11 @@ public class ConversationController {
         return new ResponseEntity<Conversation>(conversationRepository.joinConversation(id), HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public ResponseEntity<Conversation> deleteConversation(@RequestParam String id) {
+        return new ResponseEntity<Conversation>(conversationRepository.deleteConversation(id), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/leave", method = RequestMethod.POST)
     public ResponseEntity<Conversation> leaveCovnersation(@RequestParam String id) {
         return new ResponseEntity<Conversation>(conversationRepository.leaveConversation(id), HttpStatus.CREATED);

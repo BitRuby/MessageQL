@@ -22,4 +22,7 @@ public class Mutation implements GraphQLMutationResolver {
     public Message createMessage(String content, String convId) {
         return messageRepository.createMessage(content, convId);
     }
+    public Conversation deleteConversation(String _id) {
+        return conversationRepostiory.deleteConversation(_id);
+    }
 }

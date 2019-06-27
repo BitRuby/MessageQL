@@ -1,6 +1,7 @@
 type Mutation {
     newConversation: Conversation
     createMessage(content: String, convId: String): Message
+    deleteConversation(_id: String): Conversation
 }
 type Conversation {
     id: String!

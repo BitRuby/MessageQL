@@ -6,9 +6,7 @@ export class UserRoutes {
   private usrContr = new UserControllers();
 
   public getAppRoutes(): express.Router {
-    this.router.get("/one/:id", this.usrContr.users());
     this.router.get("/all/:limit", this.usrContr.usersNumber());
-    this.router.post("/create", this.usrContr.create());
     return this.router;
   }
 }

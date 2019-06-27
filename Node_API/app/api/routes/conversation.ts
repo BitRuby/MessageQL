@@ -7,9 +7,7 @@ export class ConversationRoutes {
 
   public getAppRoutes(): express.Router {
     this.router.post("/create", this.convContr.create());
-    this.router.post("/join", this.convContr.join());
-    this.router.post("/leave", this.convContr.leave());
-    this.router.get("/:id", this.convContr.conversation());
+    this.router.delete("/:id", this.convContr.delete());
     return this.router;
   }
 }

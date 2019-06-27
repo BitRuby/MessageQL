@@ -49,6 +49,16 @@ const mutation = {
     resolve: (obj: any, input: any) =>
       ConversationResolvers.joinConversation(input)
   },
+  deleteConversation: {
+    type: conversationType,
+    args: {
+      _id: {
+        type: GraphQLString
+      }
+    },
+    resolve: (obj: any, input: any) =>
+      ConversationResolvers.deleteConversation(input)
+  },
   leaveConversation: {
     type: conversationType,
     args: {

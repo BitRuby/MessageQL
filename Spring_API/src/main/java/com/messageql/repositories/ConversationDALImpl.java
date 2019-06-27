@@ -2,6 +2,7 @@ package com.messageql.repositories;
 
 import com.messageql.dal.ConversationDAL;
 import com.messageql.model.Conversation;
+import com.messageql.model.Message;
 import com.messageql.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -47,6 +48,17 @@ public class ConversationDALImpl implements ConversationDAL {
         Query query2 = new Query(Criteria.where("_id").is("id"));
         Update update = new Update().pull("users", user);
         return mongoTemplate.findAndModify(query2, update, Conversation.class);
+    }
+
+    @Override
+    public Conversation deleteConversation(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(id));
+        mongoTemplate.remove(query, Conversation.class);
+        Query query2 = new Query();
+        query2.addCriteria(Criteria.where("convId").is(id));
+        mongoTemplate.findAllAndRemove(query2, Message.class);
+        return new Conversation();
     }
 
     @Override

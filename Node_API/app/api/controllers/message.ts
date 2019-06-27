@@ -1,23 +1,28 @@
 import { Handler } from "express";
 import Message from "../models/Message";
-import User from "../models/User";
-
+import Conversation from "../models/Conversation";
 export class MessageControllers {
   create(): Handler {
     return async (req, res, next) => {
       try {
-        if (
-          !req.body.id.match(/^[0-9a-fA-F]{24}$/) ||
-          !req.body.convId.match(/^[0-9a-fA-F]{24}$/)
-        ) {
+        if (!req.body.convId.match(/^[0-9a-fA-F]{24}$/)) {
           return res.status(405).json({
             error: "Invalid identifier"
+          });
+        }
+        const conversation = await Conversation.findOne({
+          _id: req.body.convId
+        });
+        if (!conversation) {
+          return res.status(405).json({
+            message: "Handling POST requests to /message/create",
+            error: "Cannot find conversation with specified identifier"
           });
         }
         const message = new Message({
           content: req.body.content,
           date: new Date().toISOString(),
-          userId: req.body.id,
+          userId: "5d0beaf1bdf86b58d11ccb43",
           convId: req.body.convId
         });
         const save = await message.save();

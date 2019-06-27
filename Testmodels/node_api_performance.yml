@@ -1,0 +1,28 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 5
+      arrivalRate: 1000
+scenarios:
+  - flow:
+      - post:
+          url: "/conversation/create"
+          capture:
+            json: "$.result._id"
+            as: "newMessId"
+      - post:
+          url: "/message/create"
+          json:
+            convId: "{{newMessId}}"
+            content: "Hello"
+      - get:
+          url: "/message/{{newMessId}}"
+      - post:
+          url: "/message/create"
+          json:
+            convId: "{{newMessId}}"
+            content: "Whats up?"
+      - get:
+          url: "/message/{{newMessId}}"
+      - delete:
+          url: "/conversation/{{newMessId}}"
