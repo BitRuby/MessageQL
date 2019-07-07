@@ -1,5 +1,8 @@
 import User from "../../models/User";
 import bcryptjs from "bcryptjs";
+const csv = require("csvtojson");
+
+const path = "db.csv";
 
 export module UserResolvers {
   export function users(args: any) {
@@ -13,6 +16,38 @@ export module UserResolvers {
       })
       .catch(err => {
         throw err;
+      });
+  }
+  export function update() {
+    return User.updateMany({}, { $set: { username: "usee" } })
+      .then(update => {
+        return update.map((map: any) => {
+          return map;
+        });
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+  export function deleted() {
+    return User.deleteMany({})
+      .then(update => {
+        return update;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+  export function insert() {
+    return csv()
+      .fromFile(path)
+      .then((update: any) => {
+        return User.insertMany(update);
+      })
+      .then((result: any) => {
+        return result.map((map: any) => {
+          return map;
+        });
       });
   }
   export function createUser(args: any) {

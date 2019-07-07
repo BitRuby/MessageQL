@@ -2,6 +2,15 @@ type Mutation {
     newConversation: Conversation
     createMessage(content: String, convId: String): Message
     deleteConversation(_id: String): Conversation
+    insert: [User]
+    update: [User]
+    delete: [User]
+}
+
+type User {
+    id: String!
+    username: String
+    password: String
 }
 type Conversation {
     id: String!

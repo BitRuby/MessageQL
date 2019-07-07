@@ -1,0 +1,9 @@
+config:
+  target: "http://localhost:8090"
+  phases:
+    - duration: 1
+      arrivalRate: 1
+scenarios:
+  - flow:
+      - patch:
+          url: "/user/update"

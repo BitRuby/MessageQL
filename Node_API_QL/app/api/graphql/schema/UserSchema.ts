@@ -46,6 +46,22 @@ const mutation = {
       }
     },
     resolve: (obj: any, input: any) => UserResolvers.createUser(input)
+  },
+  update: {
+    type: new GraphQLList(userType),
+    args: {},
+    resolve: (obj: any, input: any) => UserResolvers.update()
+  },
+  delete: {
+    type: userType,
+    args: {},
+    resolve: (obj: any, input: any) => UserResolvers.deleted()
+
+  },
+  insert: {
+    type: new GraphQLList(userType),
+    args: {},
+    resolve: (obj: any, input: any) => UserResolvers.insert()
   }
 };
 
